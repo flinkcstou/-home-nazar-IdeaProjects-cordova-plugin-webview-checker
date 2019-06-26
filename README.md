@@ -66,3 +66,4 @@ plugins.webViewChecker.openGooglePlayPage()
   .then(function() { console.log('Google Play page of Android System Webview has been opened.'); })
   .catch(function(error) { console.error(error); });
 ```
+# -home-nazar-IdeaProjects-cordova-plugin-webview-checker
