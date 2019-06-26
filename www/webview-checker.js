@@ -1,4 +1,5 @@
 var packageName = 'com.google.android.webview';
+var chromePackageName = 'com.android.chrome';
 
 function promisifyCordovaExec(command, params, className) {
   params = params || [];
@@ -27,6 +28,12 @@ function isWebViewEnabled() {
 function getWebViewVersion() {
   return promisifyCordovaExec('getAppVersion', [packageName]);
 }
+/**
+ * Gets the version of Chrome WebView.
+ */
+function getChromeWebViewVersion() {
+  return promisifyCordovaExec('getAppVersionChrome', [chromePackageName]);
+}
 
 /**
  * Opens the Google Play page of Android System Webview.
@@ -39,5 +46,6 @@ function openGooglePlayPage() {
 module.exports = {
   isWebViewEnabled: isWebViewEnabled,
   getWebViewVersion: getWebViewVersion,
+  getChromeWebViewVersion: getChromeWebViewVersion,
   openGooglePlayPage: openGooglePlayPage
 }

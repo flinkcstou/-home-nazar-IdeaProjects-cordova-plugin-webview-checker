@@ -57,6 +57,16 @@ plugins.webViewChecker.getWebViewVersion()
   .catch(function(error) { console.error(error); });
 ```
 
+### getChromeWebViewVersion()
+
+It returns a promise which will be resolved to the string representation of the version number (eg: `57.0.2987.132`) or rejected with a `Package is not found` error if the Chrome WebView is not installed
+
+```js
+plugins.webViewChecker.getChromeWebViewVersion()
+  .then(function(version) { console.log(version); })
+  .catch(function(error) { console.error(error); });
+```
+
 ### openGooglePlayPage()
 
 A helper function to open the Google Play page of Android System Webview. Useful for prompting the user to update/enable the Android System Webview.

@@ -33,6 +33,11 @@ public class WebViewChecker extends CordovaPlugin {
       this.getAppVersion(packagename, callbackContext);
       return true;
     }
+    if (action.equals("getAppVersionChrome")) {
+      String packagename = args.getString(0);
+      this.getAppVersionChrome(packagename, callbackContext);
+      return true;
+    }
 
     if (action.equals("openGooglePlayPage")) {
       String packagename = args.getString(0);
@@ -45,6 +50,18 @@ public class WebViewChecker extends CordovaPlugin {
   }
 
   public void getAppVersion(String packagename, CallbackContext callbackContext) {
+    PackageManager packageManager = this.cordova.getActivity().getPackageManager();
+
+    try {
+      PackageInfo info = packageManager.getPackageInfo(packagename, 0);
+      String version = info.versionName;
+      callbackContext.success(version);
+    } catch (PackageManager.NameNotFoundException e) {
+      callbackContext.error("Package not found");
+    }
+  }
+
+  public void getAppVersionChrome(String packagename, CallbackContext callbackContext) {
     PackageManager packageManager = this.cordova.getActivity().getPackageManager();
 
     try {
